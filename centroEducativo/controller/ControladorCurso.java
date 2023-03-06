@@ -12,11 +12,11 @@ import javax.swing.JTextField;
 
 
 public class ControladorCurso {
-	private JTextField jtfId;
-	private JTextField jtfDescripcion;
-	private Connection conn = null;
+	public JTextField jtfId;
+	public JTextField jtfDescripcion;
+	public Connection conn = null;
 	
-	private void cargarPrimerRegistro() {
+	public void cargarPrimerRegistro() {
 		try {
 			Statement st = conn.createStatement();
 
@@ -33,7 +33,7 @@ public class ControladorCurso {
 	
 	
 	
-	private void cargarUltimoRegistro() {
+	public void cargarUltimoRegistro() {
 		try {
 			Statement st = conn.createStatement();
 
@@ -48,7 +48,7 @@ public class ControladorCurso {
 		}
 	}
 	
-	private void cargarSiguienteRegistro() {
+	public void cargarSiguienteRegistro() {
 		try {
 			Statement st = conn.createStatement();
 
@@ -63,7 +63,7 @@ public class ControladorCurso {
 		}
 	}
 	
-	private void cargarAnteriorRegistro() {
+	public void cargarAnteriorRegistro() {
 		try {
 			Statement st = conn.createStatement();
 
@@ -77,5 +77,6 @@ public class ControladorCurso {
 			e.printStackTrace();
 		}
 	}
+	
 
 }
