@@ -6,15 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-public class VentanaPrinci extends JFrame {
+public class VentanaPrincipa extends JFrame {
 
-	public VentanaPrinci() {
+	public VentanaPrincipa() {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 		JTabbedPane tabedPane = new JTabbedPane();
 		JPanel pnl1 = new JPanel();
 		pnl1.setBackground(Color.blue);
-		tabedPane.add("Cursos", pnl1);
+		tabedPane.add("Cursos", new GestionCurso());
 
 		JPanel pnl2 = new JPanel();
 		pnl2.setBackground(Color.RED);
@@ -37,14 +37,12 @@ public class VentanaPrinci extends JFrame {
 		tabedPane.add("ValoracionMateria", pnl5);
 
 		this.setContentPane(tabedPane);
-
-//		this.setContentPane(getPanelPrincipal());
-
+		
 	}
-
+	
 	public static void main(String args[]) {
-		VentanaPrinci v = new VentanaPrinci();
+		VentanaPrincipa v = new VentanaPrincipa();
 		v.setVisible(true);
-	}
 
+}
 }
