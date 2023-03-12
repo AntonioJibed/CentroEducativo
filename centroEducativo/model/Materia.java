@@ -4,26 +4,28 @@ public class Materia {
 	int id;
 	String nombre;
 	String acronimo;
-	int curso_id;
+	int idCurso;
 	/**
 	 * 
 	 */
 	public Materia() {
 		super();
 	}
+
 	/**
 	 * @param id
 	 * @param nombre
 	 * @param acronimo
-	 * @param curso_id
+	 * @param idCurso
 	 */
-	public Materia(int id, String nombre, String acronimo, int curso_id) {
+	public Materia(int id, String nombre, String acronimo, int idCurso) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.acronimo = acronimo;
-		this.curso_id = curso_id;
+		this.idCurso = idCurso;
 	}
+	
 	public int getId() {
 		return id;
 	}
@@ -42,17 +44,15 @@ public class Materia {
 	public void setAcronimo(String acronimo) {
 		this.acronimo = acronimo;
 	}
-	public int getCurso_id() {
-		return curso_id;
+	public int getIdCurso() {
+		return idCurso;
 	}
-	public void setCurso_id(int curso_id) {
-		this.curso_id = curso_id;
+	public void setIdCurso(int idCurso) {
+		this.idCurso = idCurso;
 	}
 	@Override
 	public String toString() {
-		return "Materia [id=" + id + ", nombre=" + nombre + ", acronimo=" + acronimo + ", curso_id=" + curso_id + "]";
+		return "Materia [id=" + id + ", nombre=" + nombre + ", acronimo=" + acronimo + ", idCurso=" + idCurso + "]";
 	}
-	
-	
 	
 }

@@ -9,6 +9,9 @@ import java.util.List;
 
 import javax.swing.JTextField;
 
+import centroEducativo.Conexion;
+import centroEducativo.model.Curso;
+
 
 
 public class ControladorCurso {
@@ -76,6 +79,29 @@ public class ControladorCurso {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static List<Curso> findAll() {
+		List<Curso> cursos = new ArrayList<Curso>();
+		
+		try {
+			Connection conn = Conexion.getConexion();
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery("select * from curso");
+			
+			while (rs.next()) {
+				Curso c = new Curso();
+				c.setId(rs.getInt("id"));
+				c.setDescripcion(rs.getString("descripcion"));
+				cursos.add(c);
+			}
+			
+		}
+		catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return cursos;
 	}
 	
 
