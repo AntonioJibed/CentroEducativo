@@ -1,14 +1,12 @@
 package centroEducativo.view;
 
 import java.awt.Color;
+
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-
-import centroEducativo.view.PanelGestionCurso;
-import centroEducativo.view.PanelGestionMateria;
 
 public class VentanaPrincipa extends JFrame {
 
