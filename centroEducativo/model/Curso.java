@@ -1,11 +1,10 @@
 package centroEducativo.model;
 
 public class Curso {
-	
+
 	int id;
 	String descripcion;
-	
-	
+
 	/**
 	 * 
 	 */
@@ -43,6 +42,5 @@ public class Curso {
 	public String toString() {
 		return "Curso [id=" + id + ", descripcion=" + descripcion + "]";
 	}
-	
-	
+
 }

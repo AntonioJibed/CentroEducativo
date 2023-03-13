@@ -5,3 +5,6 @@
 /ControladorMateria.class
 /ControladorProfesor.class
 /JDBCProperties.class
+/ConnectionManager.class
+/JDBCPropiedades.class
+/ControladorValoracionMateria.class

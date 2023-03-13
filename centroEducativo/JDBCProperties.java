@@ -23,7 +23,7 @@ public class JDBCProperties {
 			propiedades = new Properties();
 		    
 			try {
-				File file = new File("./src/centroEducativo/jdbc.properties");
+				File file = new File("./centroEducativo/jdbc.properties");
 				propiedades.load(new FileReader(file));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
