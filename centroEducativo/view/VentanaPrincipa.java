@@ -1,5 +1,6 @@
 package centroEducativo.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 
 import java.awt.Dimension;
@@ -8,7 +9,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
+
+import tutorialJava.capitulo9_AWT_SWING.utils.Apariencia;
+
+
 public class VentanaPrincipa extends JFrame {
+
+
 
 	public VentanaPrincipa() {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);

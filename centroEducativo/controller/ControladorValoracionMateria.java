@@ -37,7 +37,7 @@ public class ControladorValoracionMateria {
 	}
 
 	public static ValoracionMateria findFirst() {
-		return getEntidadFromResultSet("SELECT * FROM centroeducativo.valoracionMateria order by id limit 1");
+		return getEntidadFromResultSet("SELECT * FROM centroeducativo.valoracionmateria order by id limit 1");
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class ControladorValoracionMateria {
 	 * @return
 	 */
 	public static ValoracionMateria findLast() {
-		return getEntidadFromResultSet("SELECT * FROM centroeducativo.valoracionMateria order by id desc limit 1");
+		return getEntidadFromResultSet("SELECT * FROM centroeducativo.valoracionmateria order by id desc limit 1");
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class ControladorValoracionMateria {
 	 */
 	public static ValoracionMateria findNext(int actualId) {
 		return getEntidadFromResultSet(
-				"SELECT * FROM centroeducativo.valoracionMateria where id > " + actualId + " order by id limit 1");
+				"SELECT * FROM centroeducativo.valoracionmateria where id > " + actualId + " order by id limit 1");
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class ControladorValoracionMateria {
 	 */
 	public static ValoracionMateria findPrevious(int actualId) {
 		return getEntidadFromResultSet(
-				"SELECT * FROM centroeducativo.valoracionMateria where id < " + actualId + " order by id desc limit 1");
+				"SELECT * FROM centroeducativo.valoracionmateria where id < " + actualId + " order by id desc limit 1");
 	}
 
 	public static int modificar(ValoracionMateria m) {
@@ -71,7 +71,7 @@ public class ControladorValoracionMateria {
 		try {
 			Connection conn = Conexion.getConexion();
 			PreparedStatement ps = conn
-					.prepareStatement("update valoracionMateria set idProfesor = ?, idEstudiante = ?, idMateria = ?, "
+					.prepareStatement("update valoracionmateria set idProfesor = ?, idEstudiante = ?, idMateria = ?, "
 							+ "valoracion = ? where id = ?");
 
 			ps.setInt(1, m.getIdProfesor());
@@ -99,7 +99,7 @@ public class ControladorValoracionMateria {
 		try {
 			Connection conn = Conexion.getConexion();
 			PreparedStatement ps = conn.prepareStatement(
-					"insert into valoracionMateria (id, idProfesor, idEstudiante, idMateria, idValoracion) "
+					"insert into valoracionmateria (id, idProfesor, idEstudiante, idMateria, idValoracion) "
 							+ " values (?, ?, ?, ?, ?)");
 
 			int siguienteIdValido = getSiguientIdValido();
@@ -127,7 +127,7 @@ public class ControladorValoracionMateria {
 
 		try {
 			Connection conn = Conexion.getConexion();
-			PreparedStatement ps = conn.prepareStatement("delete from valoracionMateria where id = ?");
+			PreparedStatement ps = conn.prepareStatement("delete from valoracionmateria where id = ?");
 
 			ps.setInt(1, id);
 			int rows = ps.executeUpdate();
@@ -143,7 +143,7 @@ public class ControladorValoracionMateria {
 	private static int getSiguientIdValido() {
 		try {
 			Connection conn = Conexion.getConexion();
-			PreparedStatement ps = conn.prepareStatement("select max(id) from valoracionMateria");
+			PreparedStatement ps = conn.prepareStatement("select max(id) from valoracionmateria");
 
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
