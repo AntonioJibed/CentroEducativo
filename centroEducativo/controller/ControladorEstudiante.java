@@ -31,6 +31,8 @@ public class ControladorEstudiante {
 				estudiante.setDireccion(rs.getString("direccion"));
 				estudiante.setEmail(rs.getString("email"));
 				estudiante.setTelefono(rs.getString("telefono"));
+				estudiante.setColorPreferido(rs.getString("colorPreferido"));
+				estudiante.setIdTipologiaSexo(rs.getInt("idTipologiaSexo"));
 
 			}
 			rs.close();

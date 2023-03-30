@@ -26,16 +26,10 @@ import centroEducativo.model.Materia;
 
 public class PanelGestionEstudiante extends JPanel {
 	
-	private JTextField jtfApellido1;
-	private JTextField jtfApellido2;
-	private JTextField jtfDni;
-	private JTextField jtfDireccion;
-	private JTextField jtfEmail;
-	private JTextField jtfTelefono;
-	private JTextField jtfNombre;
-	private JTextField jtfId;
+
 	JButton btnPrimero, btnAnterior, btnSiguiente, btnUltimo;
 	PanelDatosPersonales datosPersonales;
+	private byte[] contenidoImagen;
 
 
 
@@ -100,16 +94,16 @@ public class PanelGestionEstudiante extends JPanel {
 		btnAnterior.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cargarEnPantalla(ControladorEstudiante.findPrevious(
-						Integer.parseInt(jtfId.getText())));
+						Integer.parseInt(datosPersonales.getId())));
 			}
-		});
+		});  
 		panel.add(btnAnterior);
 		
 		btnSiguiente = new JButton(">");
 		btnSiguiente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cargarEnPantalla(ControladorEstudiante.findNext(
-						Integer.parseInt(jtfId.getText())));
+						Integer.parseInt(datosPersonales.getId())));
 			}
 		});
 		panel.add(btnSiguiente);
@@ -159,7 +153,7 @@ public class PanelGestionEstudiante extends JPanel {
 				"Eliminación", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, 
 				null, posiblesRespuestas, posiblesRespuestas[1]);
 	    if(opcionElegida == 0) {
-	    	int actualId = Integer.parseInt(this.jtfId.getText());
+	    	int actualId = Integer.parseInt(datosPersonales.getId());
 		    if (ControladorEstudiante.eliminar(actualId) != 1) {
 		    	JOptionPane.showMessageDialog(null, "Algo ha salido mal");
 		    }
@@ -188,14 +182,15 @@ public class PanelGestionEstudiante extends JPanel {
 	 * 
 	 */
 	private void limpiarDatos() {
-		this.jtfId.setText("0");
-		this.jtfNombre.setText("");
-		this.jtfApellido1.setText("");
-		this.jtfApellido2.setText("");
-		this.jtfDni.setText("");
-		this.jtfDireccion.setText("");
-		this.jtfEmail.setText("");
-		this.jtfTelefono.setText("");
+		datosPersonales.setId(Integer.parseInt("0"));
+		datosPersonales.setNombre("");
+		datosPersonales.setApellido1("");
+		datosPersonales.setApellido2("");
+		datosPersonales.setDni("");
+		datosPersonales.setDireccion("");
+		datosPersonales.setEmail("");
+		datosPersonales.setTelefono("");
+		datosPersonales.setSexo(Integer.parseInt(""));
 		
 	}
 	
@@ -203,31 +198,34 @@ public class PanelGestionEstudiante extends JPanel {
 	 * 
 	 */
 	private void guardar() {
-		Estudiante m = new Estudiante();
-		m.setId(Integer.parseInt(this.jtfId.getText()));
-		m.setNombre(this.jtfNombre.getText());
-		m.setApellido1(this.jtfApellido1.getText());
-		m.setApellido2(this.jtfApellido2.getText());
-		m.setDni(this.jtfDni.getText());
-		m.setDireccion(this.jtfDireccion.getText());
-		m.setEmail(this.jtfEmail.getText());
-		m.setTelefono(this.jtfTelefono.getText());
+		Estudiante e = new Estudiante();
+		
+		e.setId(Integer.parseInt(datosPersonales.getId()));
+		e.setNombre(datosPersonales.getNombre());
+		e.setApellido1(datosPersonales.getApellido1());
+		e.setApellido2(datosPersonales.getApellido2());
+		e.setDni(datosPersonales.getDni());
+		e.setDireccion(datosPersonales.getDireccion());
+		e.setEmail(datosPersonales.getEmail());
+		e.setTelefono(datosPersonales.getTelefono());
+		e.setIdTipologiaSexo(Integer.parseInt(datosPersonales.getSexo()));
+		
 
 
 		
 		
 		String strError = "No se ha podido guardar";
-		if (m.getId() == 0) {
-			int nuevoIdInsertado = ControladorEstudiante.insertar(m);
+		if (e.getId() == 0) {
+			int nuevoIdInsertado = ControladorEstudiante.insertar(e);
 			if (nuevoIdInsertado < 1) {
 				JOptionPane.showMessageDialog(null, strError);
 			}
 			else {
-				this.jtfId.setText("" + nuevoIdInsertado);
+				datosPersonales.setId(nuevoIdInsertado);
 			}
 		}
 		else {
-			if (ControladorEstudiante.modificar(m) != 1) {
+			if (ControladorEstudiante.modificar(e) != 1) {
 				JOptionPane.showMessageDialog(null, strError);
 			}
 		}
@@ -247,20 +245,23 @@ public class PanelGestionEstudiante extends JPanel {
 	 * 
 	 * @param m
 	 */
-	private void cargarEnPantalla (Estudiante m) {
-		if (m != null) {
-			this.jtfId.setText("" + m.getId());
-			this.jtfNombre.setText(m.getNombre());
-			this.jtfApellido1.setText(m.getApellido1());
-			this.jtfApellido2.setText(m.getApellido2());
-			this.jtfDni.setText(m.getDni());
-			this.jtfDireccion.setText(m.getDireccion());
-			this.jtfEmail.setText(m.getEmail());
-			this.jtfTelefono.setText(m.getTelefono());
+	private void cargarEnPantalla (Estudiante e) {
+		if (e != null) {
+			datosPersonales.setId(e.getId());
+			datosPersonales.setNombre(e.getNombre());
+			datosPersonales.setApellido1(e.getApellido1());
+			datosPersonales.setApellido2(e.getApellido2());
+			datosPersonales.setSexo(e.getIdTipologiaSexo());
+			datosPersonales.setDni(e.getDni());
+			datosPersonales.setDireccion(e.getDireccion());
+			datosPersonales.setEmail(e.getEmail());
+			datosPersonales.setTelefono(e.getTelefono());
+			datosPersonales.setColor(e.getColorPreferido());
 		}
+	
 		
 		// Habilito y deshabilito botones de navegación
-		if (ControladorEstudiante.findPrevious(Integer.parseInt(jtfId.getText())) == null) {
+		if (ControladorEstudiante.findPrevious(Integer.parseInt(datosPersonales.getId())) == null) {
 			this.btnPrimero.setEnabled(false);
 			this.btnAnterior.setEnabled(false);
 		}
@@ -269,7 +270,7 @@ public class PanelGestionEstudiante extends JPanel {
 			this.btnAnterior.setEnabled(true);
 		}
 
-		if (ControladorEstudiante.findNext(Integer.parseInt(jtfId.getText())) == null) {
+		if (ControladorEstudiante.findNext(Integer.parseInt(datosPersonales.getId())) == null) {
 			this.btnUltimo.setEnabled(false);
 			this.btnSiguiente.setEnabled(false);
 		}

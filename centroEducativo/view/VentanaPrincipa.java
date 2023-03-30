@@ -27,7 +27,7 @@ public class VentanaPrincipa extends JFrame {
 		tabedPane.add("Cursos", new PanelGestionCurso());
 		tabedPane.add("Materia", new PanelGestionMateria());
 		tabedPane.add("Estudiante", new PanelGestionEstudiante());
-		tabedPane.add("Profesor", new PanelGestionProfesor());
+//		tabedPane.add("Profesor", new PanelGestionProfesor());
 		tabedPane.add("ValoracionMateria", new PanelGestionValoracionMateria());
 
 		this.setMinimumSize(new Dimension(800, 600));
